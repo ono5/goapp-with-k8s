@@ -1,0 +1,32 @@
+version: "3"
+services:
+  auth:
+    build:
+      context: ./auth-api
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    container_name: auth
+  users:
+    build:
+      context: ./users-api
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    container_name: users
+    environment:
+      AUTH_SERVICE_SERVICE_HOST: auth
+      AUTH_ADDRESS: auth
+  tasks:
+    build:
+      context: ./tasks-api
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      TASKS_FOLDER: "./tasks/tasks.txt"
+      AUTH_ADDRESS: auth
+    container_name: tasks
+    volumes:
+      - ./tasks-api/tasks:/app/tasks
+

@@ -1,0 +1,21 @@
+# users-deployment.yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: users-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: users
+  template:
+    metadata:
+      labels:
+        app: users
+    spec:
+      containers:
+      - name: users
+        image: hono1029/kub-demo-users:latest # latestタグ追加
+        env:
+          - name: AUTH_ADDRESS # 環境変数を設定
+            value: "auth-service.default" # service name + . + ネームスペース
