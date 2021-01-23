@@ -85,7 +85,7 @@ func getTaskHandler(c echo.Context) error {
 	strData := string(bytes)
 	entries := strings.Split(strData, "TASK_SPLIT")
 	fmt.Println(entries)
-	var tasks []task
+	tasks := []task{}
 	for _, entry := range entries {
 		fmt.Println(entry)
 		if entry != "" {
