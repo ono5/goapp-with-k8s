@@ -18,7 +18,8 @@ git clone https://github.com/ono5/goapp-with-k8s.git
 - [Kubernetes Install](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 
 3. Register Docker Hub
-   To use Docker Image, Let's register [Docker Hub](https://hub.docker.com/).
+
+To use Docker Image, Let's register [Docker Hub](https://hub.docker.com/).
 
 And then, you create the following repository.
 
@@ -32,7 +33,7 @@ And then, you create the following repository.
 You also need to create docker image from each Dockerfile.
 
 ```
-make build account=hono1029
+make build account=<DockerHubアカウント>
 ```
 
 5. Push to Docker Hub
@@ -40,7 +41,7 @@ make build account=hono1029
 Push your perfect docker image to your repo on Docker Hub
 
 ```
-make push account=hono1029
+make push account=<DockerHubアカウント>
 ```
 
 6. Create Service & Deployment
